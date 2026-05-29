@@ -1,0 +1,25 @@
+# Зависимости и временные файлы
+node_modules/
+*.log
+.DS_Store
+Thumbs.db
+
+# Файлы редакторов
+.vscode/
+.idea/
+*.sublime-*
+
+# Системные файлы
+*.tmp
+*.temp
+
+# Если есть папка с кешем
+.cache/
+dist/
+build/
+
+# Файлы с паролями/ключами
+.env
+.env.local
+*.key
+*.pem

@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pivot Point</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/fonts.css">
+    <link rel="stylesheet" href="css/shop.css">
+</head>
+<body>
+
+<header>
+    
+    <div class="logo-text">
+        
+        <h1>PIVOT POINT</h1>
+
+        <span>Центр дрессировки собак</span>
+      
+    </div>
+
+
+    <div class="burger" id="burger">
+        <span></span><span></span><span></span>
+    </div>
+    <nav>
+        <a href="proba.html">ГЛАВНАЯ</a>
+        <a href="services.html">УСЛУГИ</a>
+        <a href="personal.html">ПЕРСОНАЛ</a>
+        <a href="gallery.html">ГАЛЕРЕЯ</a>
+        <a href="shop.html" class="active btn">МАГАЗИН</a>
+    </nav>
+</header>
+
+<section class="shop-hero">
+    <div class="shop-hero-content">
+        <div class="shop-badge">✦ DOG FRIENDLY COLLECTION</div>
+        <h2>Всё для комфорта <span>вашего питомца</span></h2>
+        <p>Натуральные материалы, продуманный дизайн и забота о хвостатых друзьях. Доставка по Беларуси.</p>
+        <div class="hero-buttons">
+            <a href="#products" class="btn">Смотреть каталог</a>
+            <a href="#" class="hero-outline">Новинки</a>
+        </div>
+        
+    </div>
+
+</section>
+
+<section class="shop-section" id="products">
+    <h2 class="section-title">Популярные товары</h2>
+    <p class="section-sub">то, что чаще всего выбирают владельцы</p>
+    <div class="products-grid" id="productsGrid"></div>
+</section>
+
+<div class="cart-toggle" id="cartToggle">
+    
+     <img src="IMG/2.svg" alt="cart" class="cart-svg-default cart-svg">
+    <img src="IMG/1.svg" alt="cart" class="cart-svg-hover">
+   <div class="cart-count" id="cartCount">0</div>
+</div>
+<div class="cart-box" id="cartBox">
+    <h3>Корзина</h3>
+    <div id="cartItems"></div>
+    <h2 id="cartTotal">0 BYN</h2>
+    <form class="checkout-form" id="checkoutForm">
+        <input type="text" placeholder="ФИО" required>
+        <input type="text" placeholder="Адрес доставки" required>
+        <input type="tel" placeholder="Телефон" required>
+        <button class="checkout-btn" type="submit">Оформить заказ</button>
+    </form>
+</div>
+
+<div class="product-modal" id="productModal">
+    <div class="modal-content" id="modalContent"></div>
+</div>
+
+<div class="success-modal" id="successModal">
+    <div class="success-card">
+        <h3>✅ Заказ принят</h3>
+        <p>Спасибо! Менеджер свяжется с вами в ближайшее время.</p>
+        <button id="closeSuccess">Отлично</button>
+    </div>
+</div>
+
+<footer>
+    <div class="footer-content">
+        <div class="footer-column">
+            <h3>PIVOT POINT</h3>
+            <p>Профессиональный центр дрессировки собак с опытными кинологами.</p>
+        </div>
+        <div class="footer-column">
+            <h4>Контакты</h4>
+            <a href="#">+375 29 999 99 99</a>
+            <a href="#">pivotpoint@gmail.com</a>
+            <a href="#">Minsk, Belarus</a>
+        </div>
+        <div class="footer-column">
+            <h4>Соцсети</h4>
+            <a href="#">Instagram</a>
+            <a href="#">Telegram</a>
+            <a href="#">TikTok</a>
+        </div>
+        <div class="footer-column">
+            <h4>Навигация</h4>
+            <a href="proba.html">Главная</a>
+            <a href="services.html">Услуги</a>
+            <a href="personal.html">Персонал</a>
+            <a href="gallery.html">Галерея</a>
+        </div>
+    </div>
+    <div class="footer-bottom">© 2026 Pivot Point. Все права защищены.</div>
+</footer>
+
+<script src="js/shop.js"></script>
+</body>
+</html>

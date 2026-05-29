@@ -1,0 +1,1359 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pivot Point</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    
+   <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bad+Script&family=Coiny&family=Playpen+Sans:wght@100..800&display=swap" rel="stylesheet">
+     <style>
+        h1 {
+  font-family: "coiny", sans-serif;
+}
+
+h2 {
+  font-family: "bad script", sans-serif;
+}
+
+p {
+  font-family: "playpen sans", sans-serif;
+}
+
+span {
+  font-family: "playpen sans", sans-serif;
+  font-weight: 400px;
+}
+
+h4 {
+  font-family: "coiny", sans-serif;
+  font-style: italic;
+}
+        * {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background: linear-gradient(180deg, #f8efea 0%, #f2e4dc 100%);
+  color: #111111;
+  font-family: "Inter", sans-serif;
+  overflow-x: hidden;
+}
+
+header {
+  align-items: center;
+  backdrop-filter: blur(12px);
+  background: rgba(255, 255, 255, 0.75);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+  display: flex;
+  justify-content: space-between;
+  padding: 16px 45px;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+}
+
+.logo-text {
+  display: flex;
+  flex-direction: column;
+}
+.logo-text h1 {
+  font-size: 30px;
+  font-weight: 900;
+  letter-spacing: 1px;
+}
+.logo-text span {
+  color: #666;
+  font-size: 13px;
+}
+
+nav {
+  align-items: center;
+  display: flex;
+  gap: 30px;
+}
+nav a {
+  color: #111;
+  font-size: 14px;
+  font-weight: 600;
+  text-decoration: none;
+  transition: 0.3s;
+}
+nav a:hover {
+  color: #b9121b;
+}
+nav .active {
+  color: #b9121b;
+}
+
+.btn {
+  background: linear-gradient(135deg, #b9121b, #d62c35);
+  border-radius: 14px;
+  box-shadow: 0 12px 28px rgba(185, 18, 27, 0.25);
+  color: white;
+  font-weight: 700;
+  padding: 12px 24px;
+  text-decoration: none;
+  transition: 0.3s;
+}
+.btn:hover {
+  color: white;
+  transform: translateY(-3px);
+}
+
+.burger {
+  align-items: center;
+  background: white;
+  border-radius: 16px;
+  box-shadow: 0 10px 24px rgba(0, 0, 0, 0.08);
+  cursor: pointer;
+  display: none;
+  flex-direction: column;
+  gap: 5px;
+  height: 52px;
+  justify-content: center;
+  width: 52px;
+}
+.burger span {
+  background: #111;
+  border-radius: 10px;
+  height: 2px;
+  width: 22px;
+}
+
+footer {
+  background: #0a0a0a;
+  color: white;
+  padding: 70px 45px 25px;
+}
+
+.footer-content {
+  display: grid;
+  gap: 40px;
+  grid-template-columns: repeat(4, 1fr);
+  margin: auto;
+  max-width: 1400px;
+  padding-bottom: 40px;
+}
+
+.footer-column {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+.footer-column h3 {
+  font-size: 28px;
+}
+.footer-column h4 {
+  font-size: 18px;
+}
+.footer-column p,
+.footer-column a {
+  color: #aaa;
+  line-height: 1.8;
+  text-decoration: none;
+}
+.footer-column a:hover {
+  color: white;
+}
+
+.footer-bottom {
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  color: #777;
+  padding-top: 20px;
+  text-align: center;
+}
+
+.hero {
+  max-width: 1450px;
+  margin: 40px auto;
+  padding: 0 45px;
+}
+
+.creative-hero {
+  background: rgba(255, 255, 255, 0.75);
+  border-radius: 40px;
+  overflow: hidden;
+  display: grid;
+  grid-template-columns: 1.1fr 0.9fr;
+  height: 680px;
+  border: 1px solid rgba(240, 186, 152, 0.35);
+  backdrop-filter: blur(14px);
+  box-shadow: 0 25px 60px rgba(0, 0, 0, 0.12);
+}
+
+.hero-left {
+  background: radial-gradient(circle at bottom right, rgba(185, 18, 27, 0.55), transparent 30%), linear-gradient(160deg, #000, #140909);
+  color: white;
+  padding: 70px 60px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  opacity: 0;
+  animation: fadeSlideUp 0.8s ease forwards;
+}
+.hero-left .rating,
+.hero-left .stat,
+.hero-left .stat-text,
+.hero-left h2,
+.hero-left p,
+.hero-left .btn {
+  opacity: 0;
+  animation: fadeSlideUp 0.5s forwards;
+}
+.hero-left .rating {
+  animation-delay: 0.1s;
+}
+.hero-left .stat {
+  animation-delay: 0.15s;
+}
+.hero-left .stat-text {
+  animation-delay: 0.2s;
+}
+.hero-left h2 {
+  animation-delay: 0.3s;
+}
+.hero-left p {
+  animation-delay: 0.4s;
+}
+.hero-left .btn {
+  animation-delay: 0.5s;
+}
+
+.rating {
+  color: #f4b84c;
+  font-size: 24px;
+  margin-bottom: 16px;
+}
+
+.stat {
+  font-size: 58px;
+  font-weight: 800;
+}
+
+.stat-text {
+  font-size: 16px;
+  opacity: 0.72;
+  margin-bottom: 28px;
+  max-width: 320px;
+}
+
+.hero-left h2 {
+  font-size: 48px;
+  line-height: 1.05;
+  margin-bottom: 24px;
+}
+
+.hero-left p {
+  font-size: 19px;
+  line-height: 1.9;
+  color: rgba(255, 255, 255, 0.78);
+  max-width: 620px;
+}
+
+.hero-left .btn {
+  margin-top: 34px;
+  width: -moz-max-content;
+  width: max-content;
+}
+
+.hero-right {
+  position: relative;
+  height: 100%;
+}
+.hero-right img,
+.hero-right video {
+  width: 100%;
+  height: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+
+.media-block {
+  position: relative;
+  overflow: hidden;
+}
+.media-block img {
+  width: 100%;
+  height: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+.hidden-video {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
+  opacity: 0;
+  transition: opacity 0.7s ease, transform 0.7s ease;
+  pointer-events: none;
+  z-index: 2;
+}
+
+.media-block.active-video img {
+  opacity: 0;
+  transform: scale(1.03);
+}
+.media-block.active-video .hidden-video {
+  opacity: 1;
+  transform: scale(1.02);
+}
+
+body.dog-mode img {
+  transform: scale(1.03);
+  filter: saturate(1.2) contrast(1.08);
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.18);
+}
+
+.dog-mode-text {
+  position: fixed;
+  top: 30px;
+  left: 50%;
+  transform: translateX(-50%) translateY(-20px);
+  background: #111;
+  color: white;
+  padding: 18px 30px;
+  border-radius: 18px;
+  font-size: 18px;
+  font-weight: 700;
+  opacity: 0;
+  transition: 0.4s;
+  z-index: 10000;
+}
+.dog-mode-text.active {
+  opacity: 1;
+  transform: translateX(-50%) translateY(0);
+}
+
+.about {
+  max-width: 1400px;
+  margin: 60px auto;
+  padding: 0 45px;
+  position: relative;
+}
+.about::before {
+  content: "";
+  position: absolute;
+  top: -40px;
+  left: 45px;
+  width: calc(100% - 90px);
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(0, 0, 0, 0.08), transparent);
+}
+
+.about-wrapper {
+  display: grid;
+  grid-template-columns: 320px 1fr;
+  gap: 30px;
+  align-items: stretch;
+}
+
+.about-image {
+  position: relative;
+  border-radius: 34px;
+  overflow: hidden;
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.14);
+}
+.about-image img {
+  width: 100%;
+  height: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
+  transition: 0.6s;
+}
+.about-image:hover img {
+  transform: scale(1.04);
+}
+
+.about-badge {
+  position: absolute;
+  left: 35px;
+  bottom: 35px;
+  background: rgba(255, 255, 255, 0.14);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  border-radius: 26px;
+  padding: 26px 34px;
+  color: white;
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.18);
+}
+.about-badge h3 {
+  font-size: 72px;
+  line-height: 1;
+  margin-bottom: 10px;
+  font-weight: 800;
+}
+.about-badge p {
+  font-size: 22px;
+  opacity: 0.9;
+}
+
+.about-content {
+  position: relative;
+  min-height: 700px;
+  background: radial-gradient(circle at top right, rgba(185, 18, 27, 0.12), transparent 35%), rgba(255, 255, 255, 0.65);
+  border: 1px solid rgba(240, 186, 152, 0.4);
+  backdrop-filter: blur(12px);
+  border-radius: 34px;
+  padding: 55px;
+  overflow: hidden;
+  box-shadow: 0 20px 45px rgba(0, 0, 0, 0.08);
+}
+
+.about-decor {
+  width: 120px;
+  height: 4px;
+  background: linear-gradient(90deg, #b9121b, transparent);
+  border-radius: 999px;
+  margin-bottom: 28px;
+}
+
+.about-title {
+  font-size: 58px;
+  line-height: 1.05;
+  margin-bottom: 34px;
+  font-weight: 800;
+  color: #111;
+}
+.about-title span {
+  color: #b9121b;
+}
+
+.about-text {
+  display: flex;
+  flex-direction: column;
+  gap: 19px;
+  margin-bottom: 50px;
+}
+.about-text p {
+  font-size: 18px;
+  line-height: 2;
+  color: #4c4c4c;
+}
+
+.about-stats {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
+}
+
+.about-stat {
+  min-height: 120px;
+  background: white;
+  border: 1px solid rgba(240, 186, 152, 0.45);
+  border-radius: 26px;
+  padding: 15px 20px;
+  transition: 0.35s;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.05);
+}
+.about-stat:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 18px 40px rgba(0, 0, 0, 0.1);
+}
+.about-stat h3 {
+  font-size: 38px;
+  margin-bottom: 4px;
+  color: #b9121b;
+  font-weight: 800;
+}
+.about-stat p {
+  color: #555;
+  line-height: 1.7;
+  font-size: 15px;
+}
+
+.services {
+  max-width: 1400px;
+  margin: auto;
+  padding: 0 45px 80px;
+}
+
+.section-title {
+  font-size: 36px;
+  margin-bottom: 10px;
+}
+
+.section-sub {
+  font-size: 16px;
+  color: #666;
+  margin-bottom: 28px;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 18px;
+}
+
+.card {
+  background: rgba(255, 255, 255, 0.75);
+  border: 1px solid rgba(240, 186, 152, 0.5);
+  border-radius: 22px;
+  padding: 24px 20px;
+  min-height: 160px;
+  transition: 0.3s;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.05);
+}
+.card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+}
+
+.icon {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  background: #fdf1ec;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 22px;
+  margin-bottom: 18px;
+}
+
+.card h4 {
+  font-size: 20px;
+  margin-bottom: 10px;
+}
+
+.card p {
+  font-size: 14px;
+  line-height: 1.6;
+  color: #666;
+}
+
+.advantages {
+  max-width: 1400px;
+  margin: auto;
+  padding: 90px 45px;
+  background: linear-gradient(135deg, #b9121b, #d62c35);
+  border-radius: 34px;
+  position: relative;
+  overflow: hidden;
+}
+.advantages::before {
+  content: "";
+  position: absolute;
+  top: -200px;
+  right: -200px;
+  width: 500px;
+  height: 500px;
+  background: radial-gradient(circle, rgba(255, 140, 0, 0.12), transparent 70%);
+}
+
+.advantages-header {
+  margin-bottom: 20px;
+  position: relative;
+  z-index: 2;
+}
+.advantages-header h2 {
+  font-size: 52px;
+  line-height: 1.1;
+  color: white;
+  font-weight: 800;
+}
+
+.advantages-line {
+  width: 370px;
+  height: 4px;
+  background: linear-gradient(90deg, #111111, transparent);
+  border-radius: 30px;
+  margin-bottom: 24px;
+}
+
+.advantages-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 28px;
+  position: relative;
+  z-index: 2;
+}
+
+.adv-box {
+  position: relative;
+  height: 210px;
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  background: radial-gradient(circle at right center, rgba(185, 18, 27, 0.6), transparent 25%), linear-gradient(160deg, #000, #160808);
+  border-radius: 30px;
+  overflow: hidden;
+  transition: 0.35s;
+  padding: 20px;
+}
+.adv-box:hover {
+  transform: translateY(-6px);
+  border-color: rgba(255, 149, 0, 0.3);
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.45);
+}
+
+.adv-wide {
+  grid-column: span 2;
+}
+
+.adv-number {
+  position: absolute;
+  top: 10px;
+  left: 15px;
+  font-size: 70px;
+  font-weight: 800;
+  color: rgba(255, 255, 255, 0.189);
+  line-height: 1;
+}
+
+.adv-content {
+  position: relative;
+  z-index: 2;
+  margin-top: 30px;
+}
+.adv-content h3 {
+  color: white;
+  font-size: 28px;
+  margin-bottom: 10px;
+  font-weight: 700;
+}
+.adv-content p {
+  color: rgba(255, 255, 255, 0.72);
+  line-height: 1.3;
+  font-size: 18px;
+}
+
+.adv-image {
+  position: relative;
+  border-radius: 30px;
+  overflow: hidden;
+  height: 230px;
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  background: #111;
+  transition: 0.35s;
+}
+.adv-image img {
+  width: 100%;
+  height: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
+  transition: 0.5s;
+}
+.adv-image:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.45);
+}
+.adv-image:hover img {
+  transform: scale(1.05);
+}
+
+.reviews {
+  max-width: 1400px;
+  margin: auto;
+  padding: 90px 45px;
+}
+
+.reviews-flex {
+  display: flex;
+  gap: 28px;
+  overflow-x: auto;
+  overflow-y: hidden;
+  padding: 10px 10px 20px;
+  margin-top: 20px;
+  scroll-behavior: smooth;
+}
+.reviews-flex::-webkit-scrollbar {
+  height: 10px;
+}
+.reviews-flex::-webkit-scrollbar-track {
+  background: #eaded8;
+  border-radius: 20px;
+}
+.reviews-flex::-webkit-scrollbar-thumb {
+  background: #c58f7a;
+  border-radius: 20px;
+}
+
+.review-card {
+  width: 325px;
+  height: 450px;
+  flex-shrink: 0;
+  background: rgba(255, 255, 255, 0.82);
+  border: 1px solid rgba(240, 186, 152, 0.45);
+  border-radius: 28px;
+  padding: 25px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.05);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  transition: 0.3s;
+  overflow: hidden;
+}
+.review-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 18px 35px rgba(0, 0, 0, 0.08);
+}
+
+.review-stars {
+  color: #f4b84c;
+  font-size: 25px;
+  margin-bottom: 18px;
+}
+
+.review-text {
+  font-size: 13px;
+  line-height: 1.4;
+  color: #555;
+  margin-bottom: 24px;
+}
+
+.review-user {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.review-user h4 {
+  font-size: 14px;
+  margin-bottom: 4px;
+}
+.review-user span {
+  font-size: 13px;
+  color: #777;
+}
+.review-user::before {
+  content: "";
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: #b31217;
+  display: block;
+  margin-bottom: 10px;
+}
+
+.faq {
+  max-width: 1400px;
+  margin: auto;
+  padding: 0 45px 90px;
+}
+
+.faq-container {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.faq-item {
+  background: rgba(255, 255, 255, 0.75);
+  border-radius: 22px;
+  overflow: hidden;
+  border: 1px solid rgba(240, 186, 152, 0.5);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.05);
+}
+
+.faq-question {
+  width: 100%;
+  background: none;
+  border: none;
+  padding: 24px;
+  font-size: 18px;
+  font-weight: 700;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  cursor: pointer;
+  color: #111;
+}
+.faq-question span {
+  font-size: 24px;
+  color: #b9121b;
+}
+
+.faq-answer {
+  max-height: 0;
+  overflow: hidden;
+  transition: 0.4s ease;
+}
+.faq-answer p {
+  padding: 0 24px 24px;
+  color: #666;
+  line-height: 1.7;
+  font-size: 15px;
+}
+
+.ask-question {
+  position: relative;
+  margin: 45px auto 90px;
+  max-width: 1200px;
+  min-height: 520px;
+  border-radius: 32px;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 60px 35px;
+  background: url("../IMG/q.jpg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.08);
+}
+
+.ask-video {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
+  opacity: 0;
+  transition: 0.6s;
+  z-index: 0;
+}
+.ask-video.active {
+  opacity: 1;
+}
+
+.ask-question-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, rgba(15, 15, 15, 0.72), rgba(35, 15, 15, 0.72));
+}
+
+.ask-question-content {
+  position: relative;
+  z-index: 2;
+  max-width: 680px;
+  width: 100%;
+  text-align: center;
+  color: white;
+}
+.ask-question-content h2 {
+  font-size: 62px;
+  line-height: 1;
+  font-weight: 800;
+  margin-bottom: 20px;
+  color: #fff5f2;
+}
+.ask-question-content p {
+  font-size: 18px;
+  line-height: 1.5;
+  color: rgba(255, 240, 235, 0.78);
+  margin-bottom: 35px;
+}
+
+.question-form {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+.question-form input,
+.question-form textarea {
+  width: 100%;
+  border: none;
+  outline: none;
+  background: rgba(255, 255, 255, 0.12);
+  color: white;
+  padding: 18px 22px;
+  border-radius: 16px;
+  font-size: 16px;
+  backdrop-filter: blur(14px);
+  transition: 0.3s;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+.question-form input:focus,
+.question-form textarea:focus {
+  background: rgba(255, 255, 255, 0.16);
+  border: 1px solid rgba(255, 120, 120, 0.35);
+  box-shadow: 0 0 25px rgba(255, 120, 120, 0.12);
+}
+.question-form textarea {
+  min-height: 130px;
+  resize: none;
+}
+.question-form input::-moz-placeholder, .question-form textarea::-moz-placeholder {
+  color: rgba(255, 255, 255, 0.5);
+}
+.question-form input::placeholder,
+.question-form textarea::placeholder {
+  color: rgba(255, 255, 255, 0.5);
+}
+.question-form button {
+  border: none;
+  cursor: pointer;
+  padding: 18px;
+  border-radius: 16px;
+  font-size: 16px;
+  font-weight: 700;
+  color: white;
+  background: linear-gradient(135deg, #ff6b57, #c71f37);
+  transition: 0.35s;
+}
+.question-form button:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 14px 35px rgba(199, 31, 55, 0.35);
+}
+
+.creative-hero,
+.about-wrapper,
+.services .grid,
+.advantages-header,
+.advantages-grid,
+.reviews,
+.faq-container,
+.ask-question,
+.footer-content {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+.creative-hero.visible,
+.about-wrapper.visible,
+.services .grid.visible,
+.advantages-header.visible,
+.advantages-grid.visible,
+.reviews.visible,
+.faq-container.visible,
+.ask-question.visible,
+.footer-content.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+@keyframes fadeSlideUp {
+  from {
+    opacity: 0;
+    transform: translateY(40px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+@media (max-width: 1200px) {
+  .stat {
+    font-size: 48px;
+  }
+  .advantages-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+@media (max-width: 1100px) {
+  .advantages {
+    height: auto;
+  }
+  .advantages-grid {
+    grid-template-columns: 1fr;
+  }
+  .adv-wide {
+    grid-column: span 1;
+  }
+  .adv-box {
+    height: auto;
+    min-height: 220px;
+  }
+  .adv-image {
+    display: none;
+  }
+}
+@media (max-width: 1000px) {
+  .creative-hero {
+    grid-template-columns: 1fr;
+    height: auto;
+  }
+  .hero-left {
+    order: 2;
+    padding: 40px 30px;
+  }
+  .hero-left h2 {
+    font-size: 40px;
+  }
+  .hero-right {
+    order: 1;
+    height: 420px;
+  }
+  .about-wrapper {
+    grid-template-columns: 1fr;
+  }
+  .about-image {
+    min-height: 340px;
+    height: 340px;
+  }
+}
+@media (max-width: 768px) {
+  header {
+    padding: 16px 20px;
+  }
+  .hero,
+  .about,
+  .services,
+  .reviews,
+  .faq,
+  footer {
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+  .logo-text h1 {
+    font-size: 22px;
+  }
+  .logo-text span {
+    font-size: 11px;
+  }
+  .burger {
+    display: flex;
+  }
+  nav {
+    align-items: flex-start;
+    background: white;
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.08);
+    display: none;
+    flex-direction: column;
+    gap: 20px;
+    left: 0;
+    padding: 25px;
+    position: absolute;
+    top: 90px;
+    width: 100%;
+  }
+  nav.active {
+    display: flex;
+  }
+  nav a {
+    font-size: 14px;
+  }
+  .btn {
+    text-align: center;
+    width: 100%;
+  }
+  .hero {
+    margin: 25px auto;
+  }
+  .hero-left h2 {
+    font-size: 32px;
+    line-height: 1.15;
+  }
+  .hero-left p {
+    font-size: 15px;
+    line-height: 1.7;
+  }
+  .rating {
+    font-size: 20px;
+  }
+  .stat {
+    font-size: 38px;
+  }
+  .stat-text {
+    font-size: 14px;
+    margin-bottom: 20px;
+  }
+  .hero-right {
+    height: 300px;
+  }
+  .about::before {
+    left: 20px;
+    width: calc(100% - 40px);
+  }
+  .about-content {
+    padding: 34px 24px;
+  }
+  .about-title {
+    font-size: 42px;
+  }
+  .about-text p {
+    font-size: 17px;
+    line-height: 1.8;
+  }
+  .about-stats {
+    grid-template-columns: 1fr;
+  }
+  .about-image {
+    min-height: 380px;
+  }
+  .about-badge {
+    left: 20px;
+    bottom: 20px;
+    padding: 18px 24px;
+  }
+  .about-badge h3 {
+    font-size: 46px;
+  }
+  .about-badge p {
+    font-size: 16px;
+  }
+  .services {
+    padding-bottom: 50px;
+  }
+  .grid {
+    grid-template-columns: 1fr;
+    gap: 14px;
+  }
+  .section-title {
+    font-size: 28px;
+  }
+  .advantages {
+    height: auto;
+    padding: 40px 14px;
+    border-radius: 24px;
+  }
+  .advantages-header h2 {
+    font-size: 30px;
+  }
+  .advantages-line {
+    width: 180px;
+  }
+  .advantages-grid {
+    gap: 14px;
+  }
+  .adv-box {
+    min-height: 190px;
+    padding: 18px;
+    border-radius: 22px;
+  }
+  .adv-number {
+    font-size: 72px;
+  }
+  .adv-content {
+    margin-top: 48px;
+  }
+  .adv-content h3 {
+    font-size: 22px;
+  }
+  .adv-content p {
+    font-size: 15px;
+  }
+  .reviews {
+    padding: 50px 20px;
+  }
+  .review-card {
+    width: 260px;
+    height: auto;
+    min-height: 340px;
+    padding: 18px;
+  }
+  .faq {
+    padding: 0 20px 50px;
+  }
+  .faq-question {
+    padding: 18px;
+    font-size: 15px;
+  }
+  .ask-question {
+    margin: 35px auto 70px;
+    padding: 50px 22px;
+    min-height: auto;
+    border-radius: 24px;
+  }
+  .ask-question-content h2 {
+    font-size: 42px;
+  }
+  .ask-question-content p {
+    font-size: 16px;
+  }
+  footer {
+    padding: 45px 14px 20px;
+  }
+  .footer-content {
+    gap: 24px;
+    grid-template-columns: 1fr 1fr;
+    padding-bottom: 24px;
+  }
+  .footer-column h3 {
+    font-size: 20px;
+  }
+  .footer-column h4 {
+    font-size: 15px;
+  }
+  .footer-column p,
+  .footer-column a {
+    font-size: 13px;
+    line-height: 1.6;
+  }
+  .footer-bottom {
+    font-size: 12px;
+  }
+}
+@media (max-width: 480px) {
+  .hero-left h2 {
+    font-size: 28px;
+  }
+  .hero-right {
+    height: 200px;
+  }
+  .about-title {
+    font-size: 28px;
+  }
+  .advantages-header h2 {
+    font-size: 26px;
+  }
+  .ask-question-content h2 {
+    font-size: 28px;
+  }
+  .footer-content {
+    gap: 18px;
+  }
+}
+     </style>
+</head>
+<body>
+
+<header>
+    <div class="logo-text">
+        <h1>PIVOT POINT</h1>
+        <span>Центр дрессировки собак</span>
+    </div>
+    <div class="burger" id="burger">
+        <span></span>
+        <span></span>
+        <span></span>
+    </div>
+    <nav>
+        <a href="proba.html" class="active">ГЛАВНАЯ</a>
+        <a href="services.html">УСЛУГИ</a>
+        <a href="personal.html">ПЕРСОНАЛ</a>
+        <a href="gallery.html">ГАЛЕРЕЯ</a>
+        <a href="shop.html" class="btn">МАГАЗИН</a>
+    </nav>
+</header>
+
+<section class="hero">
+    <div class="creative-hero">
+        <div class="hero-left">
+            <div class="rating">★★★★★</div>
+            <div class="stat">450+</div>
+            <div class="stat-text">положительных отзывов от владельцев собак</div>
+            <h2>Ваш питомец<br>заслуживает лучшего ухода</h2>
+            <p>Мы создаём систему обучения, в которой собака понимает вас с полуслова.</p>
+            <a href="#" class="btn" id="woofBtn">WOOF-WOOF!</a>
+        </div>
+        <div class="hero-right media-block">
+            <img src="IMG/w.jpg" alt="dog">
+            <video class="hidden-video" muted loop playsinline>
+                <source src="GIF/1.mp4" type="video/mp4">
+            </video>
+        </div>
+    </div>
+</section>
+
+<section class="about">
+    <div class="about-wrapper">
+        <div class="about-image media-block">
+            <img src="IMG/about.jpg" alt="trainer">
+            <video class="hidden-video" muted loop playsinline>
+                <source src="GIF/2.mp4" type="video/mp4">
+            </video>
+            <div class="about-badge">
+                <h3>10+</h3>
+                <p>лет опыта</p>
+            </div>
+        </div>
+        <div class="about-content">
+            <div class="about-decor"></div>
+            <h2 class="about-title">Кто <span>мы?</span></h2>
+            <div class="about-text">
+                <p>Pivot Point — современный центр дрессировки собак, где опыт кинологов сочетается с бережным отношением к каждому питомцу. Мы помогаем владельцам выстроить правильную коммуникацию с собакой и добиться комфортного поведения в повседневной жизни.</p>
+                <p>Наша команда работает с собаками любых пород и возрастов: от щенков до взрослых питомцев с уже сформированными привычками. Мы подбираем индивидуальный подход и создаём программу обучения под конкретные задачи владельца.</p>
+                <p>Просторная площадка, современные методики, спокойная атмосфера и постоянная поддержка — всё это позволяет добиться стабильного и долгосрочного результата.</p>
+            </div>
+            <div class="about-stats">
+                <div class="about-stat"><h3>450+</h3><p>собак успешно прошли обучение в нашем центре</p></div>
+                <div class="about-stat"><h3>98%</h3><p>клиентов рекомендуют нас своим знакомым</p></div>
+                <div class="about-stat"><h3>24/7</h3><p>поддержка и рекомендации для владельцев собак</p></div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="services">
+    <h2 class="section-title">Чем мы занимаемся?</h2>
+    <p class="section-sub">Профессиональная дрессировка для собак всех пород и возрастов</p>
+    <div class="grid">
+        <div class="card"><div class="icon">🎓</div><h4>Базовая дрессировка</h4><p>Обучение базовым командам и правильному поведению.</p></div>
+        <div class="card"><div class="icon">🐕</div><h4>Коррекция поведения</h4><p>Работа с агрессией, страхами и гиперактивностью.</p></div>
+        <div class="card"><div class="icon">👥</div><h4>Индивидуальные занятия</h4><p>Персональная программа обучения для вашей собаки.</p></div>
+        <div class="card"><div class="icon">🐾</div><h4>Подготовка щенков</h4><p>Социализация и обучение щенков с раннего возраста.</p></div>
+    </div>
+</section>
+
+<section class="advantages">
+    <div class="advantages-header"><div class="advantages-line"></div><h2>Почему выбирают <span>Pivot Point</span></h2></div>
+    <div class="advantages-grid">
+        <div class="adv-box"><div class="adv-number">01</div><div class="adv-content"><h3>Опыт работы</h3><p>Более 10 лет помогаем владельцам воспитывать послушных и счастливых собак.</p></div></div>
+        <div class="adv-box"><div class="adv-number">02</div><div class="adv-content"><h3>Профессиональные кинологи</h3><p>Работаем с современными методиками и индивидуальным подходом.</p></div></div>
+        <div class="adv-box"><div class="adv-number">03</div><div class="adv-content"><h3>Любые породы</h3><p>Подбираем программу обучения под характер и возраст собаки.</p></div></div>
+        <div class="adv-image media-block"><img src="IMG/ad.jpg" alt="dog trainer"><video class="hidden-video" muted loop playsinline><source src="GIF/3.2.mp4" type="video/mp4"></video></div>
+        <div class="adv-box adv-wide"><div class="adv-number">04</div><div class="adv-content"><h3>Поддержка владельцев</h3><p>Помогаем не только собаке, но и обучаем владельца правильной коммуникации. Консультации, рекомендации и сопровождение после прохождения курса.</p></div></div>
+    </div>
+</section>
+
+<section class="reviews">
+    <h2 class="section-title">Отзывы клиентов</h2>
+    <p class="section-sub">Что говорят владельцы собак о нашей работе</p>
+    <div class="reviews-flex">
+        <div class="review-card"><div class="review-stars">★★★★★</div><p class="review-text">После занятий собака стала намного спокойнее и начала слушаться с первого раза. Огромное спасибо тренерам!</p><div class="review-user"><h4>Анна Смирнова</h4><span>Владелец лабрадора</span></div></div>
+        <div class="review-card"><div class="review-stars">★★★★★</div><p class="review-text">Огромное спасибо Артёму за реабилитацию моего джека Рассела Кузи! Я уже отчаялась, потому что собака кидалась на всех собак во дворе и рычала на велики. Пробовали другой центр — толку не было. Здесь с нами работали индивидуально. Кузя после месяца занятий спокойно проходит мимо овчарок, а главное — я перестала бояться отпускать поводок. Порадовало, что нас учили не "дрессировке ради галочки", а работе в реальной жизни. Место на парковке есть, в коридоре чисто, есть зона ожидания с печеньками для хозяев. Рекомендую!</p><div class="review-user"><h4>Екатерина Морозова</h4><span>Владелец джека рассела</span></div></div>
+        <div class="review-card"><div class="review-stars">★★★★★</div><p class="review-text">Очень профессиональный подход. Наш щенок быстро адаптировался и выучил базовые команды всего за несколько занятий.</p><div class="review-user"><h4>Игорь Васильев</h4><span>Владелец овчарки</span></div></div>
+        <div class="review-card"><div class="review-stars">★★★★★</div><p class="review-text">Лучший центр дрессировки в городе. Отличная атмосфера и внимательное отношение к каждому питомцу.</p><div class="review-user"><h4>Мария Орлова</h4><span>Владелец корги</span></div></div>
+        <div class="review-card"><div class="review-stars">★★★★★</div><p class="review-text">Моему Вене 8 лет, и всю жизнь он был мелким тираном: лаял на всех больших собак аж до хрипоты. В других центрах говорили, что пожилую собаку не переучить. А здесь взялись! Индивидуальные занятия проходили в щадящем режиме. Нам показали, как отвлекать Веню вкусняшкой и менять его реакцию. Сейчас мы спокойно гуляем в парке, где есть крупные собаки. Веня стал реже лаять, а я перестала трястись перед каждой встречей. Спасибо за терпение.</p><div class="review-user"><h4>Людмила Васильева</h4><span>Владелец той-терьера</span></div></div>
+    </div>
+</section>
+
+<section class="faq">
+    <h2 class="section-title">Часто задаваемые вопросы</h2>
+    <p class="section-sub">Ответы на популярные вопросы наших клиентов</p>
+    <div class="faq-container">
+        <div class="faq-item"><button class="faq-question">С какого возраста можно начинать дрессировку?<span>+</span></button><div class="faq-answer"><p>Начинать обучение можно уже с 2,5–3 месяцев. В этом возрасте щенок хорошо усваивает базовые команды, учится концентрироваться и социализироваться. Мы используем мягкие игровые методики, чтобы не перегружать психику малыша. Первые занятия включают привыкание к кличке, поводку, ошейнику, а также команды «Ко мне», «Сидеть», «Место».</p></div></div>
+        <div class="faq-item"><button class="faq-question"> Сколько длится одно занятие и как часто нужно заниматься?<span>+</span></button><div class="faq-answer"><p>Стандартное занятие длится 60 минут. Для щенков и собак с низкой концентрацией внимания продолжительность может быть сокращена до 40–45 минут. Рекомендуемая частота — 2–3 раза в неделю для устойчивого результата. Между занятиями важно закреплять пройденный материал дома (10–15 минут в день). Для профессиональной подготовки к соревнованиям возможно увеличение частоты до 4–5 раз в неделю.</p></div></div>
+        <div class="faq-item"><button class="faq-question">Есть ли у вас индивидуальные занятия или только группы?<span>+</span></button><div class="faq-answer"><p>У нас есть оба формата. Индивидуальные занятия подходят для: щенков до 5 месяцев, собак с агрессией или страхами, владельцев, которые хотят работать по гибкому графику,подготовки к конкретным целям (выставки, тестирование Т1, ЗКС). Групповые занятия (3–5 собак) помогают развить выдержку, научиться концентрироваться в присутствии других животных и стоят дешевле. Вы можете начать с индивидуальных, а затем перейти в группу.</p></div></div>
+        <div class="faq-item"><button class="faq-question">Какие документы нужны для начала занятий?<span>+</span></button><div class="faq-answer"><p>Для посещения занятий необходимо: ветеринарный паспорт с отметками о прививках (особенно от бешенства, сделанной не позднее чем за 30 дней до начала), для щенков - прививки по возрасту (обычно после второй прививки в 2,5–3 месяца), договор оказания услуг (заключается на месте), для собак агрессивных пород дополнительно может потребоваться справка от ветеринара об отсутствии заболеваний, влияющих на поведение. Все документы нужны только для безопасности вашей собаки и окружающих.</p></div></div>
+    </div>
+</section>
+
+<section class="ask-question media-block">
+    <video class="hidden-video" muted loop playsinline>
+        <source src="GIF/4.mp4" type="video/mp4">
+    </video>
+    <div class="ask-question-overlay"></div>
+    <div class="ask-question-content">
+        <h2>Остались вопросы?</h2>
+        <p>Напишите нам — мы поможем подобрать программу обучения и ответим на все вопросы.</p>
+        <form class="question-form">
+            <input type="text" placeholder="Ваше имя" required>
+            <input type="email" placeholder="Электронная почта" required>
+            <textarea placeholder="Ваш вопрос" required></textarea>
+            <button type="submit">ЗАДАТЬ ВОПРОС</button>
+        </form>
+    </div>
+</section>
+
+<footer>
+    <div class="footer-content">
+        <div class="footer-column">
+            <h3>PIVOT POINT</h3>
+            <p>Профессиональный центр дрессировки собак с опытными кинологами.</p>
+        </div>
+        <div class="footer-column">
+            <h4>Контакты</h4>
+            <a href="#">+375 29 999 99 99</a>
+            <a href="#">pivotpoint@gmail.com</a>
+            <a href="#">Minsk, Belarus</a>
+        </div>
+        <div class="footer-column">
+            <h4>Социальные сети</h4>
+            <a href="#">Instagram</a>
+            <a href="#">Telegram</a>
+            <a href="#">TikTok</a>
+        </div>
+        <div class="footer-column">
+            <h4>Навигация</h4>
+            <a href="proba.html">Главная</a>
+            <a href="services.html">Услуги</a>
+            <a href="personal.html">Персонал</a>
+            <a href="gallery.html">Галерея</a>
+        </div>
+    </div>
+    <div class="footer-bottom">© 2026 Pivot Point. Все права защищены.</div>
+</footer>
+
+<script src="js/proba.js"></script>
+</body>
+</html>
